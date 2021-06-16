@@ -1,37 +1,35 @@
-import React, { Component } from 'react';
-import logo from './hogwarts.png';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import logo from "./hogwarts.png";
+import "./App.css";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: "" };
-  }
+const App = () => {
+  const [students, setStudents] = useState([]);
 
-  callAPI() {
-    fetch("http://localhost:3000/dummy/student")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }))
-      .catch(err => err);
-  }
+  const getApi = () => {
+    fetch("http://localhost:3000/real/students")
+      .then((res) => res.text())
+      .then((res) => JSON.parse(res))
+      .then((res) => setStudents(res.data))
+      .catch((err) => err);
+  };
 
-  componentWillMount() {
-    this.callAPI();
-  }
+  useEffect(() => {
+    getApi();
+  }, []);
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Here is a list of all students:
-        </p>
-        <p className="App-intro">{this.state.apiResponse}</p>
-        </header>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Here is a list of all students:</p>
+        {students.map((student, index) => (
+          <p className="App-intro" key={index}>
+            {student.name} ({student.house})
+          </p>
+        ))}
+      </header>
+    </div>
+  );
+};
 
 export default App;
