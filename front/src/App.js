@@ -1,35 +1,25 @@
 import React, { useState, useEffect } from "react";
-import logo from "./hogwarts.png";
 import "./App.css";
-
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import Landing from "./views/landing/Landing";
+import Students from "./views/students/Students";
+import Random from "./views/random/Random";
+import Navbar from "./components/navbar/Navbar";
 const App = () => {
-  const [students, setStudents] = useState([]);
-
-  const getApi = () => {
-    fetch("http://localhost:3000/real/students")
-      .then((res) => res.text())
-      .then((res) => JSON.parse(res))
-      .then((res) => setStudents(res.data))
-      .catch((err) => err);
-  };
-
-  useEffect(() => {
-    getApi();
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Here is a list of all students:</p>
-        {students.map((student, index) => (
-          <p className="App-intro" key={index}>
-            {student.name} ({student.house})
-          </p>
-        ))}
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/students" component={Students} />
+          <Route exact path="/randomstudent" component={Random} />
+        </Switch>
+      </Router>
+    </>
   );
 };
 
 export default App;
+// <div className="App">
+// </div>
