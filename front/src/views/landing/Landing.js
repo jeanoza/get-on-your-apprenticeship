@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../hogwarts.png";
-import { Link } from "react-router-dom";
 
 function Landing() {
   const [students, setStudents] = useState([]);
