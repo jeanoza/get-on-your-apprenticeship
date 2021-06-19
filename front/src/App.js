@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./views/landing/Landing";
 import Students from "./views/students/Students";
 import Random from "./views/random/Random";
 import Navbar from "./components/navbar/Navbar";
+
 const App = () => {
   return (
     <>
@@ -21,5 +22,3 @@ const App = () => {
 };
 
 export default App;
-// <div className="App">
-// </div>
