@@ -26,7 +26,7 @@ const Title = styled.p`
 function Students(props) {
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentValue, setCurrentValue] = useState(null);
+  const [currentValue, setCurrentValue] = useState("all");
 
   const getApi = (house) => {
     setIsLoading(true);
