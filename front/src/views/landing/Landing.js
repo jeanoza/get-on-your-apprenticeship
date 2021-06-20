@@ -6,14 +6,22 @@ import {
   faHome,
   faUsers,
   faUserCheck,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+
+const Seperator = styled.div`
+  width: 1em;
+`;
 
 const Group = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 7em;
+  background-color: rgb(40, 44, 52, 0.7);
+  padding: 10px;
+  border-radius: 10px;
 `;
 const Item = styled.div`
   display: flex;
@@ -34,15 +42,21 @@ function Landing() {
         <Group>
           <Item>
             <FontAwesomeIcon icon={faHome} size="lg" />
-            <Span>redirect main page</Span>
+            <Seperator />
+            <FontAwesomeIcon icon={faChevronRight} size="lg" />
+            <Span>Redirect to main page</Span>
           </Item>
           <Item>
             <FontAwesomeIcon icon={faUsers} size="lg" />
-            <Span>redirect students list page</Span>
+            <Seperator />
+            <FontAwesomeIcon icon={faChevronRight} size="lg" />
+            <Span>Redirect to students list page</Span>
           </Item>
           <Item>
             <FontAwesomeIcon icon={faUserCheck} size="lg" />
-            <Span>redirect ramdom student choice page</Span>
+            <Seperator />
+            <FontAwesomeIcon icon={faChevronRight} size="lg" />
+            <Span>Redirect to ramdom student choice page</Span>
           </Item>
         </Group>
       </header>

@@ -3,17 +3,23 @@ import StudentsTable from "../../components/table/StudentsTable";
 import BackDrop from "../../components/images/BackDrop";
 import HeadShot from "../../components/images/HeadShot";
 import Loader from "../../components/loader/Loader";
+import styled from "styled-components";
 
 const houseImages = {
   Gryffindor:
-    "https://www.encyclopedie-hp.org/wp-content/uploads/sites/4/2016/08/shield_gry.gif",
-  Slytherin:
-    "https://images-na.ssl-images-amazon.com/images/I/61rvsHZ3AmL._AC_SY450_.jpg",
+    "https://pm1.narvii.com/6640/8c51171623bec2c66ce020cc6d90929089fb45f8_hq.jpg",
+  Slytherin: "https://i0.wp.com/wallpapercave.com/wp/wp3897901.jpg",
   Hufflepuff:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrA8vWBx2siK0ji082qNUQfvP-xGInFFDB5ykbYJq459AOPcOx97p-yT1d7Am6aBEDsYk&usqp=CAU",
+    "https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/45/d12f940413395251.jpg",
   Ravenclaw:
     "https://i.pinimg.com/originals/2e/39/fc/2e39fc365d993426d9d42e7764408060.jpg",
 };
+
+const Title = styled.p`
+  padding: 5px 10px;
+  background-color: rgb(40, 44, 52, 0.7);
+  border-radius: 10px;
+`;
 
 function Random({ match: { path } }) {
   const [student, setStudent] = useState(null);
@@ -43,8 +49,8 @@ function Random({ match: { path } }) {
         <div>
           <BackDrop urlImage={student && houseImageFilter(student.house)} />
           <header className="App-header">
+            <Title>Here is a student seleted by random choice:</Title>
             <HeadShot urlImage={student && student.image} />
-            <p>Here is a one student seleted by random choice:</p>
             <StudentsTable student={student} />
           </header>
         </div>

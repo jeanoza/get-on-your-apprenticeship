@@ -11,10 +11,16 @@ const Container = styled.div`
   filter: blur(3px);
   z-index: -1;
 `;
-const BackDrop = ({
-  urlImage = "https://www.madmoizelle.com/wp-content/uploads/2020/09/hogwarts-legacy-harry-potter-sortie.jpg",
-}) => {
-  return <Container bgImage={urlImage}></Container>;
+const BackDrop = ({ urlImage }) => {
+  return (
+    <Container
+      bgImage={
+        urlImage
+          ? urlImage
+          : "https://www.madmoizelle.com/wp-content/uploads/2020/09/hogwarts-legacy-harry-potter-sortie.jpg"
+      }
+    ></Container>
+  );
 };
 
 export default BackDrop;

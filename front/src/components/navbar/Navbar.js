@@ -16,8 +16,18 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   background-color: rgb(40, 44, 52, 0.7);
-  /* background-color: #747d8c; */
   color: rgb(255, 255, 255);
+  border-radius: 10px;
+  @media (max-width: 768px) {
+    top: calc(100vh - 3.5em);
+    bottom: 0px;
+    left: 0px;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 0px;
+    background-color: rgb(40, 44, 52, 1);
+  }
+  z-index: 2;
 `;
 
 const SLink = styled(Link)`
@@ -25,6 +35,7 @@ const SLink = styled(Link)`
   display: flex;
   padding: 15px;
   justify-content: space-around;
+  border-radius: 10px;
   align-items: center;
   :hover {
     background-color: rgb(255, 255, 255);
