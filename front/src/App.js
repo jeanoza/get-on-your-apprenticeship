@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./views/landing/Landing";
 import Students from "./views/students/Students";
 import Random from "./views/random/Random";
