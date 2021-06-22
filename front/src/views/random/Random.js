@@ -4,6 +4,7 @@ import BackDrop from "../../components/images/BackDrop";
 import HeadShot from "../../components/images/HeadShot";
 import Loader from "../../components/loader/Loader";
 import styled from "styled-components";
+import { axiosInstance } from "../../helper/axios";
 
 const houseImages = {
   Gryffindor:
@@ -24,15 +25,18 @@ const Title = styled.p`
 function Random({ match: { path } }) {
   const [student, setStudent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  
+  
   const getApi = () => {
-    fetch(`/real/${path}`)
-      .then((res) => res.text())
-      .then((res) => JSON.parse(res))
-      .then((res) => {
-        setStudent(res.data);
+    axiosInstance.get(`real${path}`)
+      .then((res)=>{
+        console.log(res.data);
+        setStudent(res.data.data);
         setIsLoading(false);
       })
-      .catch((err) => err);
+      .catch(e=>{
+        throw e.message;
+      })
   };
   useEffect(() => {
     getApi(); // eslint-disable-next-line

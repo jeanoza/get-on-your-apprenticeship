@@ -2,12 +2,9 @@ import React, { useState, useEffect } from "react";
 import StudentsTable from "../../components/table/StudentsTable";
 import BackDrop from "../../components/images/BackDrop";
 import Loader from "../../components/loader/Loader";
-import axios from "axios";
 import styled from "styled-components";
+import { axiosInstance } from "../../helper/axios";
 
-const axiosInstance = axios.create({
-  baseURL: process.env.BaseURL || "http://localhost:3000"
-})
 
 const houseImages = {
   Gryffindor:
@@ -26,18 +23,19 @@ const Title = styled.p`
 `;
 
 function Students(props) {
+  console.log(process.env);
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState("all");
 
   const getApi = (house = "All") => {
     setIsLoading(true);
-    axiosInstance.get(house !== (undefined || "All") ? `/real/students?house=${house}` : "/real/students")
+    axiosInstance.get(house !== (undefined || "All") ? `real/students?house=${house}` : "real/students")
       .then((res) => {
       setStudents(res.data.data);
       setIsLoading(false);
     }).catch(e=> {
-      throw e
+      throw e.message;
     });
   };
   const onChange = (event) => {
