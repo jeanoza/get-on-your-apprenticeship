@@ -25,7 +25,7 @@ function Random({ match: { path } }) {
   const [student, setStudent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const getApi = () => {
-    fetch(`http://localhost:3000/real/${path}`)
+    fetch(`/real/${path}`)
       .then((res) => res.text())
       .then((res) => JSON.parse(res))
       .then((res) => {

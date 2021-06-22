@@ -46,5 +46,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jeanoza.github.io/get-on-your-apprenticeship/"
+  "homepage": "https://jeanoza.github.io/get-on-your-apprenticeship/",
+  "proxy": "http://localhost:3000"
 }
