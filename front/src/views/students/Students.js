@@ -5,7 +5,9 @@ import Loader from "../../components/loader/Loader";
 import axios from "axios";
 import styled from "styled-components";
 
-const baseURL = process.env.baseURL || "http://localhost:3000";
+const axiosInstance = axios.create({
+  baseURL: process.env.BaseURL || "http://localhost:3000"
+})
 
 const houseImages = {
   Gryffindor:
@@ -28,12 +30,15 @@ function Students(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState("all");
 
-  const getApi = (house) => {
+  const getApi = (house = "All") => {
     setIsLoading(true);
-    axios.get(house ? `/real/students?house=${house}` : "/real/students/").then((res) => {
+    axiosInstance.get(house !== (undefined || "All") ? `/real/students?house=${house}` : "/real/students")
+      .then((res) => {
       setStudents(res.data.data);
       setIsLoading(false);
-    }).catch(e=>console.log(e));
+    }).catch(e=> {
+      throw e
+    });
   };
   const onChange = (event) => {
     getApi(event.currentTarget.value);
