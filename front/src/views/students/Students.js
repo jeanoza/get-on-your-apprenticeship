@@ -10,17 +10,17 @@ const houseImages = [
   {
     name: "Gryffindor",
     url: "https://pm1.narvii.com/6640/8c51171623bec2c66ce020cc6d90929089fb45f8_hq.jpg",
-    color: "#ff4757",
+    color: "#FD7272",
   },
   {
     name: "Slytherin",
     url: "https://i0.wp.com/wallpapercave.com/wp/wp3897901.jpg",
-    color: "#38ada9",
+    color: "#10ac84",
   },
   {
     name: "Hufflepuff",
     url: "https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/45/d12f940413395251.jpg",
-    color: "#fa983a",
+    color: "#ffc048",
   },
   {
     name: "Ravenclaw",

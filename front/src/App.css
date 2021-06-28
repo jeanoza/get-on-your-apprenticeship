@@ -29,6 +29,7 @@ tr {
 table {
   border: 1px solid rgb(255, 255, 255);
   padding: 5px;
+  border-radius: 15px;
 }
 
 a {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   background-color: #282c34;
+  border-radius: 15px;
   opacity: 0.8;
   @media (max-width: 768px) {
     margin-bottom: 4em;
