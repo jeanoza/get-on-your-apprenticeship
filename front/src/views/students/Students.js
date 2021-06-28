@@ -4,16 +4,30 @@ import BackDrop from "../../components/images/BackDrop";
 import Loader from "../../components/loader/Loader";
 import styled from "styled-components";
 import { axiosInstance } from "../../helper/axios";
+import { Link } from "react-router-dom";
 
-const houseImages = {
-  Gryffindor:
-    "https://pm1.narvii.com/6640/8c51171623bec2c66ce020cc6d90929089fb45f8_hq.jpg",
-  Slytherin: "https://i0.wp.com/wallpapercave.com/wp/wp3897901.jpg",
-  Hufflepuff:
-    "https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/45/d12f940413395251.jpg",
-  Ravenclaw:
-    "https://i.pinimg.com/originals/2e/39/fc/2e39fc365d993426d9d42e7764408060.jpg",
-};
+const houseImages = [
+  {
+    name: "Gryffindor",
+    url: "https://pm1.narvii.com/6640/8c51171623bec2c66ce020cc6d90929089fb45f8_hq.jpg",
+    color: "#ff4757",
+  },
+  {
+    name: "Slytherin",
+    url: "https://i0.wp.com/wallpapercave.com/wp/wp3897901.jpg",
+    color: "#38ada9",
+  },
+  {
+    name: "Hufflepuff",
+    url: "https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/misc/45/d12f940413395251.jpg",
+    color: "#fa983a",
+  },
+  {
+    name: "Ravenclaw",
+    url: "https://i.pinimg.com/originals/2e/39/fc/2e39fc365d993426d9d42e7764408060.jpg",
+    color: "#4a69bd",
+  },
+];
 
 const Title = styled.p`
   padding: 5px 10px;
@@ -21,14 +35,14 @@ const Title = styled.p`
   border-radius: 10px;
 `;
 
-const Button = styled.button`
+const Button = styled(Link)`
   /* all: unset; */
   padding: 10px;
   color: rgb(255, 255, 255);
   background-color: ${(props) => props.bg};
   border-radius: 15px;
   margin: 5px;
-  font-weight: 700;
+  /* font-weight: 700; */
 `;
 
 const Group = styled.div`
@@ -68,24 +82,24 @@ function Students(props) {
     <Loader />
   ) : (
     <div>
-      <BackDrop urlImage={currentValue && houseImages[currentValue]} />
+      <BackDrop
+        urlImage={
+          currentValue &&
+          houseImages.filter((houseImage) => {
+            return houseImage.name === currentValue;
+          })[0]?.url
+        }
+      />
       <header className="App-header">
         <Title>
           Here is a list of {currentValue} {!currentValue && "all"} students:
         </Title>
         <Group>
-          <Button onClick={onClick} bg="#e55039">
-            Gryffindor
-          </Button>
-          <Button onClick={onClick} bg="#218c74">
-            Slytherin
-          </Button>
-          <Button onClick={onClick} bg="#eccc68">
-            Hufflepuff
-          </Button>
-          <Button onClick={onClick} bg="#4b7bec">
-            Ravenclaw
-          </Button>
+          {houseImages.map((house, index) => (
+            <Button to="#!" key={index} onClick={onClick} bg={house.color}>
+              {house.name}
+            </Button>
+          ))}
         </Group>
         <StudentsTable students={students} />
       </header>
