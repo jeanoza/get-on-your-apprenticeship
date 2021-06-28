@@ -39,7 +39,7 @@ function Landing() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to Hogwarts</h1>
         <p>There are some functionalities at the left screen :</p>
-        <Group>
+        <Group id="Landing-Header">
           <Item>
             <FontAwesomeIcon icon={faHome} size="lg" />
             <Seperator />

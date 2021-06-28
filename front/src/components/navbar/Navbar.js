@@ -44,9 +44,9 @@ const SLink = styled(Link)`
   transition: color 0.3s ease-in-out, background-color 0.1s ease-in-out;
 `;
 
-function Navbar() {
+function Navbar({ id }) {
   return (
-    <Container>
+    <Container id={id}>
       <SLink to="/">
         <FontAwesomeIcon icon={faHome} size="lg" />
       </SLink>

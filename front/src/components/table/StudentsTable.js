@@ -12,9 +12,8 @@ const Container = styled.div`
 
 function StudentsTable({ students, student }) {
   return (
-    // <div style={{ backgroundColor: "#282c34"}}>
     <Container>
-      <table style={{ minWidth: "300px" }}>
+      <table id="Students-Table" style={{ minWidth: "300px" }}>
         <thead>
           <tr>
             <th>Name</th>
@@ -44,8 +43,6 @@ function StudentsTable({ students, student }) {
         </tbody>
       </table>
     </Container>
-
-    // </div>
   );
 }
 

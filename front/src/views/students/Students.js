@@ -38,14 +38,21 @@ const Title = styled.p`
 const Button = styled(Link)`
   /* all: unset; */
   padding: 10px;
-  color: rgb(255, 255, 255);
-  background-color: ${(props) => props.bg};
+  color: ${(props) => props.bg};
+  background-color: rgb(255, 255, 255);
+  border: 1px solid ${(props) => props.bg};
+
   border-radius: 15px;
   margin: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  :hover {
+    color: rgb(255, 255, 255);
+    background-color: ${(props) => props.bg};
+  }
   @media (max-width: 768px) {
     font-size: 12px;
   }
-  font-weight: 600;
 `;
 
 const Group = styled.div`
@@ -97,7 +104,7 @@ function Students(props) {
         <Title>
           Here is a list of {currentValue} {!currentValue && "all"} students:
         </Title>
-        <Group>
+        <Group id="Buttons">
           {houseImages.map((house, index) => (
             <Button to="#!" key={index} onClick={onClick} bg={house.color}>
               {house.name}
