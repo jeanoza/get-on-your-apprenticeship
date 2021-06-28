@@ -38,6 +38,9 @@ const Colone = styled.div`
   :nth-child(${(props) => props.nth}) {
     animation-delay: ${(props) => props.delay};
   }
+  @media (max-width: 768px) {
+    height: 1em;
+  }
 `;
 
 function Loader() {

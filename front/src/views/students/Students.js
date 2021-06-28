@@ -42,7 +42,10 @@ const Button = styled(Link)`
   background-color: ${(props) => props.bg};
   border-radius: 15px;
   margin: 5px;
-  /* font-weight: 700; */
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+  font-weight: 600;
 `;
 
 const Group = styled.div`
