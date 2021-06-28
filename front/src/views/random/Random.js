@@ -25,18 +25,18 @@ const Title = styled.p`
 function Random({ match: { path } }) {
   const [student, setStudent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  
-  
+
   const getApi = () => {
-    axiosInstance.get(`real${path}`)
-      .then((res)=>{
-        console.log(res.data);
+    axiosInstance
+      .get(`real${path}`)
+      .then((res) => {
+        // console.log(res.data);
         setStudent(res.data.data);
         setIsLoading(false);
       })
-      .catch(e=>{
+      .catch((e) => {
         throw e.message;
-      })
+      });
   };
   useEffect(() => {
     getApi(); // eslint-disable-next-line

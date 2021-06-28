@@ -5,7 +5,6 @@ import Loader from "../../components/loader/Loader";
 import styled from "styled-components";
 import { axiosInstance } from "../../helper/axios";
 
-
 const houseImages = {
   Gryffindor:
     "https://pm1.narvii.com/6640/8c51171623bec2c66ce020cc6d90929089fb45f8_hq.jpg",
@@ -22,30 +21,48 @@ const Title = styled.p`
   border-radius: 10px;
 `;
 
+const Button = styled.button`
+  /* all: unset; */
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  background-color: ${(props) => props.bg};
+  border-radius: 15px;
+  margin: 5px;
+  font-weight: 700;
+`;
+
+const Group = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 function Students(props) {
-  console.log(process.env);
+  // console.log(process.env);
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState("all");
 
-  const getApi = (house = "All") => {
+  const getApi = (house) => {
     setIsLoading(true);
-    axiosInstance.get(house !== (undefined || "All") ? `real/students?house=${house}` : "real/students")
+    axiosInstance
+      .get(house !== "all" ? `real/students?house=${house}` : "real/students")
       .then((res) => {
-      setStudents(res.data.data);
-      setIsLoading(false);
-    }).catch(e=> {
-      throw e.message;
-    });
+        setStudents(res.data.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        throw e.message;
+      });
   };
-  const onChange = (event) => {
-    getApi(event.currentTarget.value);
-    setCurrentValue(event.currentTarget.value);
+
+  const onClick = (event) => {
+    setCurrentValue(event.currentTarget.innerText);
   };
 
   useEffect(() => {
-    getApi(); // eslint-disable-next-line
-  }, []);
+    getApi(currentValue); // eslint-disable-next-line
+  }, [currentValue]);
 
   return isLoading ? (
     <Loader />
@@ -56,13 +73,20 @@ function Students(props) {
         <Title>
           Here is a list of {currentValue} {!currentValue && "all"} students:
         </Title>
-        <select onChange={onChange} value={currentValue}>
-          <option>All</option>
-          <option>Gryffindor</option>
-          <option>Slytherin</option>
-          <option>Hufflepuff</option>
-          <option>Ravenclaw</option>
-        </select>
+        <Group>
+          <Button onClick={onClick} bg="#e55039">
+            Gryffindor
+          </Button>
+          <Button onClick={onClick} bg="#218c74">
+            Slytherin
+          </Button>
+          <Button onClick={onClick} bg="#eccc68">
+            Hufflepuff
+          </Button>
+          <Button onClick={onClick} bg="#4b7bec">
+            Ravenclaw
+          </Button>
+        </Group>
         <StudentsTable students={students} />
       </header>
     </div>
